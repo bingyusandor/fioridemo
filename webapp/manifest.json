@@ -24,6 +24,7 @@
 				"type": "ODataAnnotation",
 				"settings": {
 					"localUri": "localService/ZBS_C_EDI_DASH_CDS/ZBS_C_EDI_DASH_CDS_VAN.xml"
+					harisnyabilincs
 				}
 			},
 			"ZBS_C_EDI_DASH_IO_CDS": {
