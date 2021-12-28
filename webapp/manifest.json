@@ -1,0 +1,138 @@
+{
+	"_version": "1.7.0",
+	"start_url": "start.html",
+	"sap.app": {
+		"id": "anubhav.training.edi.ZOVPIDOC",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{app_title}}",
+		"description": "{{app_description}}",
+		"dataSources": {
+			"ZBS_C_EDI_DASH_CDS": {
+				"uri": "/sap/opu/odata/sap/ZBS_C_EDI_DASH_CDS/",
+				"type": "OData",
+				"settings": {
+					"annotations": ["ZBS_C_EDI_DASH_CDS_VAN"],
+					"localUri": "localService/ZBS_C_EDI_DASH_CDS/metadata.xml"
+				}
+			},
+			"ZBS_C_EDI_DASH_CDS_VAN": {
+				"uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBS_C_EDI_DASH_CDS_VAN',Version='0001')/$value/",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "localService/ZBS_C_EDI_DASH_CDS/ZBS_C_EDI_DASH_CDS_VAN.xml"
+				}
+			},
+			"ZBS_C_EDI_DASH_IO_CDS": {
+				"uri": "/sap/opu/odata/sap/ZBS_C_EDI_DASH_IO_CDS/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZBS_C_EDI_DASH_IO_CDS/metadata.xml",
+					"annotations": ["ZBS_C_EDI_DASH_IO_CDS_VAN"]
+				}
+			},
+			"ZBS_C_EDI_DASH_IO_CDS_VAN": {
+				"uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBS_C_EDI_DASH_IO_CDS_VAN',Version='0001')/$value/",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "localService/ZBS_C_EDI_DASH_IO_CDS/ZBS_C_EDI_DASH_IO_CDS_VAN.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_belize"]
+	},
+	"sap.ui5": {
+		"dependencies": {
+			"minUI5Version": "${sap.ui5.dist.version}",
+			"libs": {
+				"sap.ovp": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"@i18n": {
+				"preload": true,
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"ZBS_C_EDI_DASH_CDS": {
+				"dataSource": "ZBS_C_EDI_DASH_CDS",
+				"settings": {
+					"defaultCountMode": "Inline"
+				}
+			},
+			"ZBS_C_EDI_DASH_IO_CDS": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultCountMode": "Inline"
+				},
+				"dataSource": "ZBS_C_EDI_DASH_IO_CDS",
+				"preload": true
+			}
+		},
+		"extends": {
+			"extensions": {}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		}
+	},
+	"sap.ovp": {
+		"globalFilterModel": "ZBS_C_EDI_DASH_CDS",
+		"globalFilterEntityType": "",
+		"containerLayout": "fixed",
+		"enableLiveFilter": true,
+		"considerAnalyticalParameters": false,
+		"cards": {
+			"card00": {
+				"model": "ZBS_C_EDI_DASH_CDS",
+				"template": "sap.ovp.cards.list",
+				"settings": {
+					"title": "{{card00_title}}",
+					"subTitle": "{{card00_subTitle}}",
+					"entitySet": "ZBS_C_EDI_DASH",
+					"listType": "condensed",
+					"listFlavor": "bar",
+					"sortBy": "TotalErrors",
+					"sortOrder": "descending",
+					"addODataSelect": false
+				}
+			},
+			"card01": {
+				"model": "ZBS_C_EDI_DASH_CDS",
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{card01_title}}",
+					"subTitle": "{{card01_subTitle}}",
+					"entitySet": "ZBS_C_EDI_DASH",
+					"navigation": "dataPointNav",
+					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart",
+					"identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+				}
+			}
+		}
+	}
+}
