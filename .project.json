@@ -36,8 +36,8 @@
     "resourceModelName": "i18n"
   },
   "mockpreview": {
-    "mockUri": "/sap/opu/odata/sap/ZBS_C_EDI_DASH_IO_CDS",
-    "metadataFilePath": "",
+    "mockUri": "/sap/opu/odata/sap/ZBS_C_EDI_DASH_CDS/",
+    "metadataFilePath": "localService/ZBS_C_EDI_DASH_CDS/metadata.xml",
     "loadJSONFiles": false,
     "loadCustomRequests": false,
     "mockRequestsFilePath": ""
